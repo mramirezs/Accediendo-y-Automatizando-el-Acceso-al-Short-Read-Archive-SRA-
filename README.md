@@ -61,7 +61,7 @@ Pero notamos que incluso en ese caso, `fastq-dump` necesita primero descargar el
 
 Philip Ewels creó un servicio llamado [SRA Explorer](https://sra-explorer.info/) que proporciona una interfaz incomparablemente mejor que la de NCBI.
 
-> Dado que es un servicio proporcionado por un científico independiente, puede no estar continuamente actualizado o soportado.
+Dado que es un servicio proporcionado por un científico independiente, puede no estar continuamente actualizado o soportado.
 
 ## 8. ¿Dónde está el archivo SRA?
 
