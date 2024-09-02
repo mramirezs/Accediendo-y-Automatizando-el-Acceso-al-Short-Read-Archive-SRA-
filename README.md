@@ -128,9 +128,6 @@ El programa `sra-stat` puede generar un informe en XML sobre los datos.
 ```bash
 sra-stat --xml --statistics SRR4237168
 ```
-
-Aquí tienes la traducción al español y la conversión a formato markdown para GitHub del capítulo proporcionado:
-
 ---
 
 # Automatizando el acceso al SRA
