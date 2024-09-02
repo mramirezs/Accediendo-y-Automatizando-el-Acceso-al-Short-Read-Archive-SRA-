@@ -180,11 +180,13 @@ Produciendo:
 
 # Automatizando el acceso al SRA
 
-Demostramos cómo automatizar el acceso al Short Read Archive (SRA) para obtener datos depositados con publicaciones científicas. Al final del capítulo, mostramos cómo obtener información sobre todos los datos almacenados en SRA y compilar varias estadísticas sobre ellos. La primera versión de este libro se escribió en el otoño de 2016. Revisamos este mismo capítulo y actualizamos los números en la primavera de 2019. ¿Cuánto cambiaron los números? Mucho más de lo que esperaba.
+Demostramos cómo automatizar el acceso al Short Read Archive (SRA) para obtener datos depositados con publicaciones científicas. Mostramos cómo obtener información sobre todos los datos almacenados en SRA y compilar varias estadísticas sobre ellos. 
 
 ## 1. ¿Cómo automatizar la descarga de múltiples ejecuciones de SRA?
 
-La estrategia principal es obtener primero el número del proyecto PRJN, luego, a partir de los números del proyecto, obtener los números de ejecución SRR, y finalmente ejecutar `fastq-dump` en cada número SRR. Comienza con el número del bioproyecto que se encuentra en la publicación. Por ejemplo, en *Genomic surveillance elucidates Ebola virus origin*, notamos que el número del proyecto es PRJNA257197.
+La estrategia principal es obtener primero el número del proyecto PRJN, luego, a partir de los números del proyecto, obtener los números de ejecución SRR, y finalmente ejecutar `fastq-dump` en cada número SRR. 
+
+Comenzaremos con el número del bioproyecto que se encuentra en la publicación. Por ejemplo, en *Genomic surveillance elucidates Ebola virus origin*, notamos que el número del proyecto es PRJNA257197.
 
 ```bash
 esearch -db sra -query PRJNA257197
@@ -194,11 +196,11 @@ El comando anterior devuelve un “resultado de búsqueda” que nos indica que 
 
 ```xml
 <ENTREZ_DIRECT>
-<Db>sra</Db>
-<WebEnv>NCID_1_74789875_130.14.18.34_9001_1474294072_501009688_0MetA0_S_MegaStore_F_1</WebEnv>
-<QueryKey>1</QueryKey>
-<Count>891</Count>
-<Step>1</Step>
+  <Db>sra</Db>
+  <WebEnv>MCID_66d63afd3456474c30759e40</WebEnv>
+  <QueryKey>1</QueryKey>
+  <Count>891</Count>
+  <Step>1</Step>
 </ENTREZ_DIRECT>
 ```
 
@@ -220,9 +222,15 @@ Obtendrás:
 
 ```
 Run
-SRR1972917
-SRR1972918
-SRR1972919
+SRR1972948
+SRR1972956
+SRR1972955
+SRR1972969
+SRR1972958
+SRR1972943
+SRR1972970
+SRR1972960
+SRR1972949
 ...
 ```
 
@@ -235,18 +243,25 @@ cat runinfo.csv | cut -f 1 -d ',' | grep SRR | head > runids.txt
 Nuestro archivo `runids.txt` contiene:
 
 ```
-SRR1972917
-SRR1972918
-SRR1972919
+SRR1972948
+SRR1972956
+SRR1972955
+SRR1972969
+SRR1972958
+SRR1972943
+SRR1972970
+SRR1972960
+SRR1972949
+SRR1972964
 ...
 ```
 
 Ahora tenemos acceso a los ID de ejecución SRR para el experimento. En el siguiente paso, deseamos generar una serie de comandos de la siguiente forma:
 
 ```bash
-fastq-dump -X 10000 --split-files SRR1972917
-fastq-dump -X 10000 --split-files SRR1972918
-fastq-dump -X 10000 --split-files SRR1972919
+fastq-dump -X 10000 --split-files SRR1972948
+fastq-dump -X 10000 --split-files SRR1972956
+fastq-dump -X 10000 --split-files SRR1972955
 ...
 ```
 
@@ -263,10 +278,16 @@ cat runids.txt | parallel "echo This is number {}"
 Producirá:
 
 ```
-This is number SRR1972917
-This is number SRR1972918
-This is number SRR1972919
-This is number SRR1972920
+This is number SRR1972948
+This is number SRR1972956
+This is number SRR1972955
+This is number SRR1972969
+This is number SRR1972958
+This is number SRR1972943
+This is number SRR1972970
+This is number SRR1972960
+This is number SRR1972949
+This is number SRR1972964
 ...
 ```
 
@@ -284,6 +305,21 @@ También tenemos opciones para filtrar por varios metadatos en este archivo. Por
 
 ```bash
 cat runinfo.csv | grep '2014-08-19' | cut -f 1 -d ',' | grep SRR | head -10 > ids.txt
+```
+
+Producirá:
+
+```
+SRR1553587
+SRR1553588
+SRR1553589
+SRR1553590
+SRR1553591
+SRR1553592
+SRR1553593
+SRR1553594
+SRR1553595
+SRR1553596
 ```
 
 ## 3. ¿Hay aún más metadatos?
@@ -311,11 +347,16 @@ cat docsum.xml | xtract -pattern DocumentSummary -element Bioproject,Biosample,R
 El comando produce la salida:
 
 ```
-PRJNA257197 SAMN03253746 SRR1972976
-PRJNA257197 SAMN03253745 SRR1972975
-PRJNA257197 SAMN03253744 SRR1972974
-PRJNA257197 SAMN03254300 SRR1972973
-PRJNA257197 SAMN03254299 SRR1972972
+PRJNA257197	SAMN03253746	SRR1972976
+PRJNA257197	SAMN03253745	SRR1972975
+PRJNA257197	SAMN03253744	SRR1972974
+PRJNA257197	SAMN03254300	SRR1972973
+PRJNA257197	SAMN03254299	SRR1972972
+PRJNA257197	SAMN03254298	SRR1972971
+PRJNA257197	SAMN03254296	SRR1972970
+PRJNA257197	SAMN03254295	SRR1972969
+PRJNA257197	SAMN03254294	SRR1972968
+PRJNA257197	SAMN03254291	SRR1972967
 ...
 ```
 
