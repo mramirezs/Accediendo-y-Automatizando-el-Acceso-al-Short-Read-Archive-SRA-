@@ -180,7 +180,7 @@ Produciendo:
 
 # Automatizando el acceso al SRA
 
-En este capítulo, demostramos cómo automatizar el acceso al Short Read Archive (SRA) para obtener datos depositados con publicaciones científicas. Al final del capítulo, mostramos cómo obtener información sobre todos los datos almacenados en SRA y compilar varias estadísticas sobre ellos. La primera versión de este libro se escribió en el otoño de 2016. Revisamos este mismo capítulo y actualizamos los números en la primavera de 2019. ¿Cuánto cambiaron los números? Mucho más de lo que esperaba.
+Demostramos cómo automatizar el acceso al Short Read Archive (SRA) para obtener datos depositados con publicaciones científicas. Al final del capítulo, mostramos cómo obtener información sobre todos los datos almacenados en SRA y compilar varias estadísticas sobre ellos. La primera versión de este libro se escribió en el otoño de 2016. Revisamos este mismo capítulo y actualizamos los números en la primavera de 2019. ¿Cuánto cambiaron los números? Mucho más de lo que esperaba.
 
 ## 1. ¿Cómo automatizar la descarga de múltiples ejecuciones de SRA?
 
