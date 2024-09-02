@@ -128,6 +128,54 @@ El programa `sra-stat` puede generar un informe en XML sobre los datos.
 ```bash
 sra-stat --xml --statistics SRR4237168
 ```
+Produciendo:
+
+```
+<Run accession="SRR4237168" read_length="variable" spot_count="2452" base_count="7313936" base_count_bio="7313936" spot_count_mates="0" base_count_bio_mates="0" spot_count_bad="0" base_count_bio_bad="0" spot_count_filtered="0" base_count_bio_filtered="0">
+  <Size value="5018039" units="bytes"/>
+  <Bases cs_native="false" count="7313936">
+    <Base value="A" count="1599468"/>
+    <Base value="C" count="1965864"/>
+    <Base value="G" count="2114395"/>
+    <Base value="T" count="1634209"/>
+    <Base value="N" count="0"/>
+  </Bases>
+  <AlignInfo>
+  </AlignInfo>
+  <Statistics nreads="1" nspots="2452">
+    <Read index="0" count="2452" average="2982.85" stdev="3115.22"/>
+  </Statistics>
+  <QualityCount>
+    <Quality value="0" count="3598"/>
+    <Quality value="1" count="62887"/>
+    <Quality value="2" count="168752"/>
+    <Quality value="3" count="157487"/>
+    <Quality value="4" count="171074"/>
+    <Quality value="5" count="233885"/>
+    <Quality value="6" count="274003"/>
+    <Quality value="7" count="329025"/>
+    <Quality value="8" count="414111"/>
+    <Quality value="9" count="470791"/>
+    <Quality value="10" count="499845"/>
+    <Quality value="11" count="623351"/>
+    <Quality value="12" count="814500"/>
+    <Quality value="13" count="1550204"/>
+    <Quality value="14" count="1540406"/>
+    <Quality value="15" count="17"/>
+  </QualityCount>
+  <Databases>
+    <Database>
+      <Table name="SEQUENCE">
+        <Statistics source="meta">
+          <Rows count="2452"/>
+          <Elements count="7313936"/>
+        </Statistics>
+      </Table>
+    </Database>
+  </Databases>
+</Run>
+```
+
 ---
 
 # Automatizando el acceso al SRA
