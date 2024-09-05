@@ -1,8 +1,8 @@
-# Accediendo al Archivo de Lecturas Cortas (SRA)
+# Accediendo al Archivo de secuencia de Lecturas (SRA)
 
-## 1. ¿Qué es el Archivo de Lecturas Cortas (SRA)?
+## 1. ¿Qué es el Archivo de Secuencia de Lecturas (SRA)?
 
-El Archivo de Lecturas de Secuencias (SRA, por sus siglas en inglés) es un servicio de almacenamiento de datos proporcionado por NCBI. La historia del desarrollo del SRA es relativamente compleja e incluye la cancelación del servicio, la cual fue ampliamente anunciada, promovida y luego retractada. Paralelamente, el diseño de datos y la interfaz se estandarizaron prematuramente, antes de que la comunidad entendiera completamente cómo los científicos podrían necesitar acceder a los datos. La increíble tasa de crecimiento de los datos depositados bloqueó y congeló esos estándares. Hoy en día, parece difícil cambiarlos sin inconvenientes para un gran número de personas. No es de extrañar que haya toda una “industria casera” de herramientas que intentan evitar y automatizar el acceso al SRA.
+El Archivo de Secuencia de Lecturas (SRA, por sus siglas en inglés) es un servicio de almacenamiento de datos proporcionado por NCBI. La historia del desarrollo del SRA es relativamente compleja e incluye la cancelación del servicio, la cual fue ampliamente anunciada, promovida y luego retractada. Paralelamente, el diseño de datos y la interfaz se estandarizaron prematuramente, antes de que la comunidad entendiera completamente cómo los científicos podrían necesitar acceder a los datos. La increíble tasa de crecimiento de los datos depositados bloqueó y congeló esos estándares. Hoy en día, parece difícil cambiarlos sin inconvenientes para un gran número de personas. No es de extrañar que haya toda una “industria casera” de herramientas que intentan evitar y automatizar el acceso al SRA.
 
 ## 2. ¿Cuáles son los esquemas de nomenclatura del SRA?
 
