@@ -111,7 +111,9 @@ Después de completar la descarga, se realiza una conversión según los paráme
 
 ## 10. ¿Qué es un “spot” en SRA?
 
-Las herramientas SRA usan la palabra “spots” y no “lecturas” (mediciones), aunque casi siempre parecen significar lo mismo. Respuestas a la pregunta en Biostar: ¿Qué es un “Spot” en el formato SRA? arrojan algo de luz:
+Las herramientas SRA usan la palabra “spots” y no “lecturas” (mediciones), aunque casi siempre parecen significar lo mismo. 
+
+¿Qué es un “Spot” en el formato SRA?
 
 “El modelo de spot es centrado en Illumina GA. […] Todas las bases para una única ubicación constituyen el spot.”
 
