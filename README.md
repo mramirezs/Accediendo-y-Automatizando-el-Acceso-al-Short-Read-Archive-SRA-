@@ -25,7 +25,7 @@ conda install bioconda::sra-tools
 
 ## 4. ¿Existen alternativas al SRA?
 
-![Alternativa a la base de datos del SRA](figures/ENA_alternativa.png)
+![Alternativa a la base de datos del SRA](figures/ENA_alnternativa.png)
 
 ## 5. ¿Dónde está la documentación del SRA?
 
