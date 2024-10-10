@@ -17,11 +17,15 @@ Los datos en el SRA están organizados bajo una estructura jerárquica donde cad
   
 ## 3. ¿Cómo descargamos datos del SRA?
 
-Puedes descargar datos a través de un navegador web (después de instalar un complemento web) o desde la línea de comandos mediante el paquete sratoolkit, que se puede instalar a través de conda.
+Puedes descargar datos a través de un navegador web (https://www.ncbi.nlm.nih.gov/sra) o desde la línea de comandos mediante el paquete sratoolkit (https://github.com/ncbi/sra-tools), que se puede instalar a través de conda.
+
+```
+conda install bioconda::sra-tools
+```
 
 ## 4. ¿Existen alternativas al SRA?
 
-El Archivo Europeo de Nucleótidos (ENA) proporciona un repositorio alternativo para almacenar la información de secuenciación de nucleótidos del mundo, cubriendo datos de secuenciación en bruto, información de ensamblaje de secuencias y anotación funcional. Los esquemas de nomenclatura y la organización de los datos reflejan los del SRA, aunque los archivos se almacenan directamente en formatos FASTQ y BAM y no necesitan conversión mediante sratoolkit.
+![Categorias de SRA](figures/ena_alternativa.png)
 
 ## 5. ¿Dónde está la documentación del SRA?
 
