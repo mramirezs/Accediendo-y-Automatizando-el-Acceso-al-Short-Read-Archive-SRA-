@@ -13,7 +13,7 @@ Los datos en el SRA están organizados bajo una estructura jerárquica donde cad
 - **SRA Experiment**: SRX****, una biblioteca de secuenciación única para una muestra específica.
 - **SRA Run**: SRR**** o ERR**** (ejemplo: SRR1553610) es un manifiesto de archivo(s) de datos vinculado a una biblioteca de secuenciación dada (experimento).
 
-
+![](sra_categorias.png)
   
 ## 3. ¿Cómo descargamos datos del SRA?
 
