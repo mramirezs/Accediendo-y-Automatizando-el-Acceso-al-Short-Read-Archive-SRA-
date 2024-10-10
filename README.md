@@ -29,9 +29,7 @@ conda install bioconda::sra-tools
 
 ## 5. ¿Dónde está la documentación del SRA?
 
-- El **Manual del SRA** contiene una descripción detallada del Archivo de Lecturas Cortas.
-- La **Documentación del SRA Toolkit** describe las herramientas de línea de comandos que se pueden usar para acceder a los datos.
-- El **GitHub del SRA Toolkit** puede tener información más actualizada sobre la solución de problemas.
+![Categorias de SRA](figures/documentacion_sra.png)
 
 ## 6. ¿Cómo funciona el sratoolkit?
 
