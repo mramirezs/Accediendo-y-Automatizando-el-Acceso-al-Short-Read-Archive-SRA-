@@ -2,7 +2,7 @@
 
 ## 1. ¿Qué es el Archivo de Secuencia de Lecturas (SRA)?
 
-El Archivo de Secuencia de Lecturas (SRA, por sus siglas en inglés) es un servicio de almacenamiento de datos proporcionado por NCBI. La historia del desarrollo del SRA es relativamente compleja e incluye la cancelación del servicio, la cual fue ampliamente anunciada, promovida y luego retractada. Paralelamente, el diseño de datos y la interfaz se estandarizaron prematuramente, antes de que la comunidad entendiera completamente cómo los científicos podrían necesitar acceder a los datos. La increíble tasa de crecimiento de los datos depositados bloqueó y congeló esos estándares. Hoy en día, parece difícil cambiarlos sin inconvenientes para un gran número de personas. No es de extrañar que haya toda una “industria casera” de herramientas que intentan evitar y automatizar el acceso al SRA.
+El Archivo de Secuencia de Lecturas (SRA, por sus siglas en inglés) es un servicio de almacenamiento de datos proporcionado por NCBI. 
 
 ## 2. ¿Cuáles son los esquemas de nomenclatura del SRA?
 
@@ -13,6 +13,8 @@ Los datos en el SRA están organizados bajo una estructura jerárquica donde cad
 - **SRA Experiment**: SRX****, una biblioteca de secuenciación única para una muestra específica.
 - **SRA Run**: SRR**** o ERR**** (ejemplo: SRR1553610) es un manifiesto de archivo(s) de datos vinculado a una biblioteca de secuenciación dada (experimento).
 
+
+  
 ## 3. ¿Cómo descargamos datos del SRA?
 
 Puedes descargar datos a través de un navegador web (después de instalar un complemento web) o desde la línea de comandos mediante el paquete sratoolkit, que se puede instalar a través de conda.
