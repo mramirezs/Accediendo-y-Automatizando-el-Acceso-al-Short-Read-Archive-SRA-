@@ -97,39 +97,47 @@ El mismo comando `srapath SRR1553607` imprimirá:
 /Users/ialbert/ncbi/public/sra/SRR1553607.sra
 ```
 
-## 9. ¿A dónde van las descargas?
+## 9. ¿Qué es un “spot” en SRA?
 
-Cuando se inicia cualquier descarga a través de `fastq-dump`, los datos completos para ese ID de ejecución se descargarán a una ubicación en tu computadora. Puedes ver esa ruta con:
+Claro, aquí tienes una versión mejorada y más clara del párrafo:
 
-```bash
-srapath SRR1553607
-```
+---
 
-Por defecto, esta ubicación es en `~/ncbi/public/sra/`. Puede haber otras secuencias relacionadas con un archivo SRA, en cuyo caso también se descargarán.
+## 9. ¿Qué es un “spot” en el SRA?
 
-Para investigar los datos SRA descargados, haz:
+En el contexto del **Sequence Read Archive (SRA)**, las herramientas utilizan el término **“spot”** en lugar de **“lecturas”** (o reads), aunque en la práctica suelen referirse a conceptos similares.
 
-```bash
-ls -l ~/ncbi/public/sra/
-```
+### Definición de “Spot” en el Formato SRA
 
-Después de completar la descarga, se realiza una conversión según los parámetros.
+El **modelo de spot** está basado en la tecnología de secuenciación **Illumina Genome Analyzer (GA)**. Según este modelo, **un spot** se define como todas las bases correspondientes a una única ubicación en la celda de flujo de un secuenciador Illumina. Esto incluye:
 
-> **Nota**: Incluso si solo pedimos las primeras diez lecturas de un archivo FASTQ, el contenido completo del FASTQ deberá descargarse en la ubicación “oculta” y, a partir de eso, se mostrarán las primeras diez lecturas. Para conjuntos de datos grandes, esto puede tomar una cantidad considerable de tiempo y puede usar una cantidad sustancial de espacio en disco. Ahora, si accedemos al mismo ID de ejecución de SRA una segunda vez, los datos ya estarán allí y la conversión será mucho más rápida.
+- **Primera lectura**: La secuencia inicial obtenida desde la ubicación.
+- **Código de barras** (si está presente): Una secuencia adicional utilizada para identificar y demultiplexar las muestras.
+- **Segunda lectura (lectura pareada)**: Una secuencia complementaria obtenida si la ejecución de la secuenciación es de **extremos pareados** (paired-end).
 
-## 10. ¿Qué es un “spot” en SRA?
+### Consideraciones sobre la Terminología
 
-Las herramientas SRA usan la palabra “spots” y no “lecturas” (mediciones), aunque casi siempre parecen significar lo mismo. 
+Es importante notar que la terminología **“spot”** puede generar confusión, especialmente porque:
+- **No es universal**: El término está específicamente adaptado para la tecnología de Illumina GA y **puede no aplicarse** de la misma manera a otros tipos de secuenciadores.
+- **Intercambiabilidad limitada**: Aunque “spot” y “lectura” se usan de manera similar en muchos casos, no son completamente equivalentes en todos los contextos técnicos.
 
-¿Qué es un “Spot” en el formato SRA?
+### División de los Spots
 
-“El modelo de spot es centrado en Illumina GA. […] Todas las bases para una única ubicación constituyen el spot.”
+En la práctica, los **spots** suelen dividirse en archivos separados utilizando la opción `--split-files`. Esto permite gestionar y analizar de manera individual las distintas partes que componen cada spot, como las lecturas pareadas.
 
-Resulta que la terminología es confusa y puede no aplicarse a otros instrumentos.
+### Resumen
 
-En los secuenciadores Illumina, una única ubicación en la celda de flujo genera la primera lectura, el código de barras (si existe), y la segunda lectura (pareada) (si la ejecución fue una secuenciación de extremos pareados). Casi siempre dividimos los spots (mediante la opción `--split-files`) en archivos de origen.
+- **Spot**: Conjunto de todas las secuencias provenientes de una única ubicación en la celda de flujo de Illumina GA.
+- **Componentes del Spot**:
+  - Primera lectura
+  - Código de barras (si aplica)
+  - Segunda lectura (en secuenciaciones pareadas)
+- **Terminología**: Específica de Illumina GA y puede no ser aplicable a otros secuenciadores.
+- **Gestión de Spots**: Frecuentemente se dividen en archivos separados para facilitar su manejo y análisis.
 
-## 11. ¿Cómo obtenemos información sobre la ejecución?
+Esta estructura facilita la comprensión al separar claramente las definiciones, consideraciones y prácticas comunes relacionadas con el término “spot” en el SRA.
+
+## 10. ¿Cómo obtenemos información sobre la ejecución?
 
 El programa `sra-stat` puede generar un informe en XML sobre los datos.
 
@@ -190,7 +198,9 @@ Produciendo:
 
 # Automatizando el acceso al SRA
 
-Demostramos cómo automatizar el acceso al Short Read Archive (SRA) para obtener datos depositados con publicaciones científicas. Mostramos cómo obtener información sobre todos los datos almacenados en SRA y compilar varias estadísticas sobre ellos. 
+- Demostramos cómo automatizar el acceso al Short Read Archive (SRA) para obtener datos depositados con publicaciones científicas.
+   
+- Mostramos cómo obtener información sobre todos los datos almacenados en SRA y compilar varias estadísticas sobre ellos. 
 
 ## 1. ¿Cómo automatizar la descarga de múltiples ejecuciones de SRA?
 
@@ -263,7 +273,6 @@ SRR1972970
 SRR1972960
 SRR1972949
 SRR1972964
-...
 ```
 
 Ahora tenemos acceso a los ID de ejecución SRR para el experimento. En el siguiente paso, deseamos generar una serie de comandos de la siguiente forma:
@@ -304,6 +313,10 @@ This is number SRR1972964
 Podemos reemplazar el comando `echo` por `fastq-dump`:
 
 ```bash
+cat runids.txt | parallel "echo fastq-dump -X 10000 --split-files {}"
+```
+
+```bash
 cat runids.txt | parallel fastq-dump -X 10000 --split-files {}
 ```
 
@@ -334,7 +347,9 @@ SRR1553596
 
 ## 3. ¿Hay aún más metadatos?
 
-Sí, los hay. El formato runinfo es solo un subconjunto de toda la información que SRA mantiene sobre la ejecución y, a veces, no incluye información esencial que puedas necesitar. Cuando eso ocurra, necesitarás procesar los metadatos descargados en otro formato, llamado resumen de documento (docsum). ¿Otro formato para la misma información? ¡Gracias, NCBI! Obtenemos entonces el XML docsum:
+Sí, los hay. El formato runinfo es solo un subconjunto de toda la información que SRA mantiene sobre la ejecución y, a veces, no incluye información esencial que puedas necesitar. Cuando eso ocurra, necesitarás procesar los metadatos descargados en otro formato, llamado resumen de documento (docsum). ¿Otro formato para la misma información? 
+
+¡Gracias, NCBI! Obtenemos entonces el XML docsum:
 
 ```bash
 esearch -db sra -query PRJNA257197 | efetch -format docsum > docsum.xml
@@ -353,6 +368,11 @@ La estrategia para procesar archivos docsum es transformar el XML con el comando
 ```bash
 cat docsum.xml | xtract -pattern DocumentSummary -element Bioproject,Biosample,Run@acc | head
 ```
+
+**`xtract -pattern DocumentSummary -element Bioproject,Biosample,Run@acc`**:
+   - **`xtract`**: Es una herramienta que se utiliza para extraer datos de archivos XML.
+   - **`-pattern DocumentSummary`**: Indica que `xtract` debe buscar y procesar elementos dentro del XML que coincidan con el patrón `DocumentSummary`. Esto significa que se centrará en las secciones del XML que están etiquetadas como `DocumentSummary`.
+   - **`-element Bioproject,Biosample,Run@acc`**: Especifica los elementos que se desean extraer de cada `DocumentSummary`. En este caso, se extraen los valores de los elementos `Bioproject`, `Biosample`, y el atributo `acc` del elemento `Run`.
 
 El comando produce la salida:
 
@@ -375,6 +395,29 @@ Encontrar las etiquetas correctas no es una tarea fácil, especialmente porque n
 ```bash
 alias pretty="python -c 'import sys;import xml.dom.minidom;s=sys.stdin.read();print(xml.dom.minidom.parseString(s).toprettyxml());'"
 ```
+
+La línea de comandos `alias pretty="python -c 'import sys;import xml.dom.minidom;s=sys.stdin.read();print(xml.dom.minidom.parseString(s).toprettyxml());'"` crea un alias llamado `pretty` que se utiliza para formatear archivos XML de manera que sean más legibles. A continuación, se desglosaremos cada parte del comando:
+
+1. **`alias pretty=`**:
+   - Define un alias llamado `pretty`. Un alias es un atajo que representa un comando o una serie de comandos. En este caso, `pretty` se utilizará para ejecutar un script de Python que formatea XML.
+
+2. **`"python -c '...'`**:
+   - Ejecuta un comando de Python directamente desde la línea de comandos. La opción `-c` permite pasar un script de Python como una cadena de texto.
+
+3. **`import sys; import xml.dom.minidom;`**:
+   - Importa los módulos necesarios de Python:
+     - **`sys`**: Proporciona acceso a variables y funciones relacionadas con el intérprete de Python, como la entrada estándar.
+     - **`xml.dom.minidom`**: Un módulo que permite trabajar con documentos XML en Python, proporcionando herramientas para manipular y formatear XML.
+
+4. **`s=sys.stdin.read();`**:
+   - Lee todo el contenido de la entrada estándar (stdin) y lo almacena en la variable `s`. Esto permite que el script procese datos XML que se le pasen a través de un pipe o redirección.
+
+5. **`print(xml.dom.minidom.parseString(s).toprettyxml());`**:
+   - **`xml.dom.minidom.parseString(s)`**: Analiza la cadena `s` como un documento XML.
+   - **`.toprettyxml()`**: Convierte el documento XML en una cadena con un formato más legible, añadiendo saltos de línea y sangrías para mejorar la claridad.
+   - **`print(...)`**: Imprime el XML formateado en la salida estándar.
+
+El alias `pretty` es una herramienta útil para mejorar la legibilidad de archivos XML al formatearlos con sangrías y saltos de línea, facilitando su revisión y comprensión.
 
 Usando:
 
