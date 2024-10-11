@@ -99,12 +99,6 @@ El mismo comando `srapath SRR1553607` imprimirá:
 
 ## 9. ¿Qué es un “spot” en SRA?
 
-Claro, aquí tienes una versión mejorada y más clara del párrafo:
-
----
-
-## 9. ¿Qué es un “spot” en el SRA?
-
 En el contexto del **Sequence Read Archive (SRA)**, las herramientas utilizan el término **“spot”** en lugar de **“lecturas”** (o reads), aunque en la práctica suelen referirse a conceptos similares.
 
 ### Definición de “Spot” en el Formato SRA
