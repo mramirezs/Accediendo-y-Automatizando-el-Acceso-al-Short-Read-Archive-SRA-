@@ -33,7 +33,7 @@ conda install bioconda::sra-tools
 
 ## 6. ¿Cómo funciona el sratoolkit?
 
-Existen varias herramientas (ver el directorio de herramientas). Las más utilizadas son:
+Existen varias herramientas y las más utilizadas son:
 
 - **fastq-dump**, descarga datos en formato FASTQ.
 - **sam-dump**, descarga datos en formato de alineación SAM.
