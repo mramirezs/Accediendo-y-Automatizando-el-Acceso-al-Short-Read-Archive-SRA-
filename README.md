@@ -53,7 +53,11 @@ SRR1553607_1.fastq
 SRR1553607_2.fastq
 ```
 
-El comando `fastq-dump` realiza dos cosas en secuencia. Primero descarga los datos en el formato SRA y luego los convierte al formato FASTQ. Podemos pedirle a la herramienta que convierta solo un subconjunto de datos; por ejemplo, las primeras 10,000 lecturas:
+El comando `fastq-dump` realiza dos cosas en secuencia. Primero descarga los datos en el formato SRA y luego los convierte al formato FASTQ. 
+
+![Descarga de fastq](figures/descarga_fastq.png)
+
+Podemos pedirle a la herramienta que convierta solo un subconjunto de datos; por ejemplo, las primeras 10,000 lecturas:
 
 ```bash
 fastq-dump --split-files -X 10000 SRR1553607
