@@ -82,7 +82,7 @@ srapath SRR1553607
 Imprime:
 
 ```
-https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos1/sra-pub-run-5/SRR1553607/SRR1553607.1
+https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR1553607/SRR1553607
 ```
 
 Pero después de ejecutar:
